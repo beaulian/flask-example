@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import sys
+sys.path.append("../")
 import unittest
 from flask import current_app
 from app import create_app, db
@@ -20,7 +22,7 @@ class BasicsTestCase(unittest.TestCase):
 		self.assertFalse(current_app is None)
 
 	def test_app_is_testing(self):
-		self.assertTrue(current_app,app.config["TESTING"])
+		self.assertTrue(current_app.config["TESTING"])
 
 if __name__ == '__main__':
 	unittest.main()
