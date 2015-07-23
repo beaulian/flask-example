@@ -3,7 +3,7 @@
 import os
 from app import create_app, db
 from app.models import User, Role,Post,Permission
-from flask.ext.script import Manager, Shell
+from flask.ext.script import Manager, Shell,Server
 from flask.ext.migrate import Migrate, MigrateCommand
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')
@@ -21,7 +21,8 @@ def make_shell_context():
     		Post=Post, Permission=Permission,Follow=Follow)
 manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
-
+server = Server(host='0.0.0.0', port=80)
+manager.add_command('server', server)
 
 @manager.command
 def test(coverage=False):
