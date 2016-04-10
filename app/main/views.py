@@ -26,7 +26,7 @@ def index():
 	offset = request.args.get("offset",5,int)
 	#在首页中显示所关注用户文章
 	show_follower = False
-	if current_user.is_authenticated():
+	if current_user.is_authenticated:
 		show_follower = bool(request.cookies.get('show_follower',''))
 	if show_follower:
 		query = current_user.follow_posts

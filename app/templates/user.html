@@ -4,7 +4,7 @@
 
 {% block page_content %}
 <div class="page-header">
-    <img class="img-rounded profile-thumbnail" src="/static/user.jpg">
+    <img class="img-rounded profile-thumbnail" src="/static/flasky/user.jpg">
 <div class="profile-header">
 	{% if user.name or user.location %}
 	<h1>{{ user.username }}</h1>
@@ -41,7 +41,7 @@
 	<a href="{{ url_for('.followers', username=user.username) }}">
 		Followers: <span class="badge">{{ user.followers.count() }}</span>
 	</a>
-	{% if current_user.is_authenticated() and user != current_user and
+	{% if current_user.is_authenticated and user != current_user and
 			user.is_following(current_user) %}
 		| <span class="label label-default">Follows you</span>
 	{% endif %}

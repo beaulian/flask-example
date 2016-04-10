@@ -2,7 +2,7 @@
 #coding=utf-8
 import os
 from app import create_app, db
-from app.models import User, Role,Post,Permission
+from app.models import *
 from flask.ext.script import Manager, Shell,Server
 from flask.ext.migrate import Migrate, MigrateCommand
 
